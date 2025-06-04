@@ -28,9 +28,15 @@ namespace MovieLibrary.Application.Repositories
             return Task.FromResult(_movies.AsEnumerable());
         }
 
-        public Task<Movie?> GetIdByAsync(Guid id)
+        public Task<Movie?> GetByIdAsync(Guid id)
         {
             var movie = _movies.SingleOrDefault(x => x.Id == id);
+            return Task.FromResult(movie);
+        }
+
+        public Task<Movie?> GetBySlugAsync(string slug)
+        {
+            var movie = _movies.SingleOrDefault(x => x.Slug == slug);
             return Task.FromResult(movie);
         }
 
